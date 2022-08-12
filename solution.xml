@@ -5,7 +5,7 @@
       <LocalizedName description="Pledge Operation" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.22</Version>
+    <Version>1.0.0.25</Version>
     <Managed>1</Managed>
     <Publisher>
       <UniqueName>Donation</UniqueName>
@@ -479,15 +479,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_segment" displayName="Segment" solution="msdyn_segment (9.1.2207.2001)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10006)</package>
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10007)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="10" schemaName="msdyn_msdyn_segment_contact" displayName="msdyn_msdyn_segment_contact" parentSchemaName="msdyn_segment" parentDisplayName="Segment" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_sequencetarget" displayName="Sequence Target" solution="msdyn_Sequence (9.1.2207.2002)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10006)</package>
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+        <Required type="1" schemaName="msdyn_sequencetarget" displayName="Sequence Target" solution="msdyn_Sequence (9.1.2207.2003)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10007)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="1" schemaName="contact" displayName="連絡人" />
       </MissingDependency>
@@ -539,11 +539,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msiati_nonembeddedcodelist" displayName="Non Embedded Codelist" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientcountryid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientcountryid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msiati_nonembeddedcodelist" displayName="Non Embedded Codelist" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_transaction_recipientregionid" displayName="msiati_msiati_nec_msnfp_transaction_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_transaction_tiedstatusid" displayName="msiati_msiati_nec_msnfp_transaction_tiedstatusid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msiati_sector" displayName="Sector" solution="NonprofitIATI (3.0.3.0)" />
@@ -1607,7 +1607,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msdyn_gdproptout" displayName="GDPR Optout" parentSchemaName="campaign" parentDisplayName="Campaign" solution="PredictiveOpportunityScoring (9.0.22072.10001)">
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="26" schemaName="All Campaigns and Campaign Templates" displayName="All Campaigns and Campaign Templates" parentSchemaName="campaign" parentDisplayName="Campaign" id="{8ebce151-8451-490d-a8db-59fff97949e8}" />
       </MissingDependency>
@@ -2099,15 +2099,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msdyn_name" displayName="Segment name" parentSchemaName="msdyn_segment" parentDisplayName="Segment" solution="msdyn_segment (9.1.2207.2001)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10006)</package>
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10007)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="10" schemaName="msdyn_msdyn_segment_contact" displayName="msdyn_msdyn_segment_contact" parentSchemaName="msdyn_segment" parentDisplayName="Segment" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msdyn_segmentid" displayName="segment" parentSchemaName="msdyn_segment" parentDisplayName="Segment" solution="msdyn_segment (9.1.2207.2001)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10006)</package>
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdyn_AcceleratedSalesAnchor (9.1.22072.10007)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="10" schemaName="msdyn_msdyn_segment_contact" displayName="msdyn_msdyn_segment_contact" parentSchemaName="msdyn_segment" parentDisplayName="Segment" />
       </MissingDependency>
@@ -2129,7 +2129,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_nonembeddedcodelistid" displayName="Non Embedded Codelist" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_nonembeddedcodelistid" displayName="Non Embedded Codelist" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" solution="NonprofitIATI (3.0.3.0)" />
@@ -2307,15 +2307,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_disbursementchannelid" displayName="Disbursement Channel" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_financetypeid" displayName="Finance Type" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_flowtypeid" displayName="Flow Type" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_humanitarian" displayName="Humanitarian" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
@@ -2327,7 +2327,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_providerorganizationid" displayName="Provider Organization" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_account_msnfp_donorcommitment_ProviderOrganization" displayName="msiati_account_msnfp_donorcommitment_ProviderOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_commitment_pledgedOnAccount" displayName="msnfp_commitment_pledgedOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientactivityidentifier" displayName="Recipient Activity Identifier" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
@@ -2339,11 +2339,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientcountryid" displayName="Recipient Country" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientorganizationid" displayName="Recipient Organization" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_account_msnfp_donorcommitment_ProviderOrganization" displayName="msiati_account_msnfp_donorcommitment_ProviderOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_commitment_pledgedOnAccount" displayName="msnfp_commitment_pledgedOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientregiondescription" displayName="Recipient Region Description" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
@@ -2351,7 +2351,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientregionid" displayName="Recipient Region" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_reference" displayName="Reference" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
@@ -2359,7 +2359,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_tiedstatusid" displayName="Tied Status" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" displayName="msiati_msiati_nec_msnfp_donorcommitment_financetypeid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
+        <Dependent type="10" schemaName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" displayName="msiati_msiati_nec_msnfp_donorcommitment_recipientregionid" parentSchemaName="msiati_nonembeddedcodelist" parentDisplayName="Non Embedded Codelist" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_transactiontype" displayName="Transaction Type" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitIATI (3.0.3.0)" />
@@ -2537,7 +2537,7 @@
         <Required type="2" schemaName="msnfp_pledgedbyaccountid" displayName="Pledged By Account" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitCore (3.0.3.2)">
           <package>NonprofitCoreAnchor (3.0.3.3)</package>
         </Required>
-        <Dependent type="10" schemaName="msiati_account_msnfp_donorcommitment_ProviderOrganization" displayName="msiati_account_msnfp_donorcommitment_ProviderOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_commitment_pledgedOnAccount" displayName="msnfp_commitment_pledgedOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msnfp_pledgedbyaccountid" displayName="Pledged By Account" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitCore (3.0.3.2)">
@@ -2555,7 +2555,7 @@
         <Required type="2" schemaName="msnfp_pledgedonaccountid" displayName="Pledged On Account" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitCore (3.0.3.2)">
           <package>NonprofitCoreAnchor (3.0.3.3)</package>
         </Required>
-        <Dependent type="10" schemaName="msiati_account_msnfp_donorcommitment_ProviderOrganization" displayName="msiati_account_msnfp_donorcommitment_ProviderOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_commitment_pledgedOnAccount" displayName="msnfp_commitment_pledgedOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msnfp_pledgedonaccountid" displayName="Pledged On Account" parentSchemaName="msnfp_donorcommitment" parentDisplayName="Donor Commitment" solution="NonprofitCore (3.0.3.2)">
@@ -3009,7 +3009,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_provideriorganizationid" displayName="Provider Organization" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_account_msnfp_transaction_RecipientOrganization" displayName="msiati_account_msnfp_transaction_RecipientOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_txn_receiptOnAccount" displayName="msnfp_txn_receiptOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientcountryid" displayName="Recipient Country" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitIATI (3.0.3.0)" />
@@ -3017,7 +3017,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientorganizationid" displayName="Recipient Organization" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitIATI (3.0.3.0)" />
-        <Dependent type="10" schemaName="msiati_account_msnfp_transaction_RecipientOrganization" displayName="msiati_account_msnfp_transaction_RecipientOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_txn_receiptOnAccount" displayName="msnfp_txn_receiptOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msiati_recipientregionid" displayName="Recipient Region" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitIATI (3.0.3.0)" />
@@ -3205,7 +3205,7 @@
         <Required type="2" schemaName="msnfp_transaction_receiptonaccountid" displayName="Receipt On Account" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitCore (3.0.3.2)">
           <package>NonprofitCoreAnchor (3.0.3.3)</package>
         </Required>
-        <Dependent type="10" schemaName="msiati_account_msnfp_transaction_RecipientOrganization" displayName="msiati_account_msnfp_transaction_RecipientOrganization" parentSchemaName="account" parentDisplayName="Account" />
+        <Dependent type="10" schemaName="msnfp_txn_receiptOnAccount" displayName="msnfp_txn_receiptOnAccount" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="msnfp_transaction_receiptonaccountid" displayName="Receipt On Account" parentSchemaName="msnfp_transaction" parentDisplayName="Transaction" solution="NonprofitCore (3.0.3.2)">
@@ -4285,13 +4285,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="60" displayName="兒信作業SRD-聯絡人" parentDisplayName="連絡人" id="{1e2fa99c-ffc5-ec11-a7b5-002248567dd5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="60" displayName="Contact" parentDisplayName="連絡人" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>
@@ -4479,13 +4479,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.TalkingPointsControl.TalkingPoints" displayName="MscrmControls.TalkingPointsControl.TalkingPoints" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="60" displayName="兒信作業SRD-聯絡人" parentDisplayName="連絡人" id="{1e2fa99c-ffc5-ec11-a7b5-002248567dd5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.TalkingPointsControl.TalkingPoints" displayName="MscrmControls.TalkingPointsControl.TalkingPoints" solution="msdynce_Talkingpoints (9.0.1.701894)">
-          <package>msdynce_SalesInsightsAnchor (9.0.22072.10001)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.22072.10002)</package>
         </Required>
         <Dependent type="60" displayName="Contact" parentDisplayName="連絡人" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       </MissingDependency>

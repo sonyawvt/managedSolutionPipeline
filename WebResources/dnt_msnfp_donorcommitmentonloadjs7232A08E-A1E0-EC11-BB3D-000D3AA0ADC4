@@ -22,7 +22,7 @@ function OnLoadForm(executionContext)
 
     if (product != null)
     {
-    	formContext.getControl("dnt_childrenid").setDisabled(false);
+        formContext.getControl("dnt_childrenid").setDisabled(false);
         var productName = product[0].name;
         if (productName.startsWith('國內資助款'))
         {
@@ -45,13 +45,42 @@ function OnLoadForm(executionContext)
     }
 }
 
+function OnSaveForm(executionContext)
+{
+    var formContext = executionContext.getFormContext();
+
+    if (formContext.ui.getFormType() != 1)
+        return;
+
+    var contactaccountnumber = formContext.ui.quickForms.get('contactaccountnumber').getControl(0).getAttribute().getValue();
+
+    if (contactaccountnumber == null)
+    {
+        alert("此捐款人沒有捐款者編號，無法建立Donor Commitment");
+        executionContext.getEventArgs().preventDefault();
+        return;
+
+    }
+
+    var bankAccountCode = formContext.ui.quickForms.get('QuickviewControl1655522853485').getControl(6).getAttribute().getValue();
+
+    if (bankAccountCode == null)
+    {
+        alert("此Bank Account(Payment Code)沒有Code，無法建立Donor Commitment");
+        executionContext.getEventArgs().preventDefault();
+
+    }
+
+
+}
+
 function Onchange_productid(executionContext)
 {
-	var formContext = executionContext.getFormContext();
+    var formContext = executionContext.getFormContext();
     var product = formContext.getAttribute("dnt_productid").getValue();
     if (product != null)
     {
-    	formContext.getControl("dnt_childrenid").setDisabled(false);
+        formContext.getControl("dnt_childrenid").setDisabled(false);
         formContext.getAttribute("dnt_childrenid").setValue(null)
         var productName = product[0].name;
         if (productName.startsWith('國內資助款'))

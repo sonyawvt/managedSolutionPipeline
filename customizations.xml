@@ -26325,6 +26325,46 @@
             <Description description="Donor commitments represent the actual or prospective agreement between a donor and an organization for the donor to make a gift to the organization." languagecode="1033" />
           </Descriptions>
           <attributes>
+            <attribute PhysicalName="craa0_AllenTest">
+              <Type>nvarchar</Type>
+              <Name>craa0_allentest</Name>
+              <LogicalName>craa0_allentest</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0.0.0</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <Format>text</Format>
+              <MaxLength>100</MaxLength>
+              <Length>200</Length>
+              <displaynames>
+                <displayname description="Allen Test" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="1033" />
+              </Descriptions>
+            </attribute>
             <attribute PhysicalName="CreatedBy">
               <Type>lookup</Type>
               <Name>createdby</Name>
@@ -28645,7 +28685,15 @@
                               <cell id="{88be75b3-3497-192c-6c17-e91219562a60}" locklevel="0" showlabel="true" ordinalvalue="10004" solutionaction="Removed" />
                             </row>
                             <row>
-                              <cell id="{dd3b05e8-1e83-be44-7b42-a4383d164818}" locklevel="0" showlabel="true" colspan="1" rowspan="1" ordinalvalue="10002" solutionaction="Added">
+                              <cell id="{d0b11556-6897-457e-9640-20e8678b48a2}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10002" solutionaction="Added">
+                                <labels>
+                                  <label description="Pledged By Contact" languagecode="1033" />
+                                </labels>
+                                <control id="msnfp_pledgedbycontactid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_pledgedbycontactid" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{dd3b05e8-1e83-be44-7b42-a4383d164818}" locklevel="0" showlabel="true" colspan="1" rowspan="1" ordinalvalue="10003" solutionaction="Added">
                                 <labels>
                                   <label description="Designation" languagecode="1033" />
                                 </labels>
@@ -28663,7 +28711,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{87fc2cb1-4956-4d34-8470-d85bdf0ae0fe}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10003" solutionaction="Added">
+                              <cell id="{87fc2cb1-4956-4d34-8470-d85bdf0ae0fe}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004" solutionaction="Added">
                                 <labels>
                                   <label description="Campaign Activity" languagecode="1033" />
                                 </labels>
@@ -28671,7 +28719,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{a1e60ba2-9f01-4159-9004-e32474b55e03}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10004" solutionaction="Added">
+                              <cell id="{a1e60ba2-9f01-4159-9004-e32474b55e03}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10005" solutionaction="Added">
                                 <labels>
                                   <label description="Product" languagecode="1033" />
                                 </labels>
@@ -28679,7 +28727,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{676a2315-ab23-4c4e-8c20-2884342392ec}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10005" solutionaction="Added">
+                              <cell id="{676a2315-ab23-4c4e-8c20-2884342392ec}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10006" solutionaction="Added">
                                 <labels>
                                   <label description="Child" languagecode="1033" />
                                 </labels>
@@ -28692,7 +28740,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{a388e8c2-d5b2-4bc5-9332-c319611c561c}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10006" solutionaction="Added">
+                              <cell id="{a388e8c2-d5b2-4bc5-9332-c319611c561c}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10007" solutionaction="Added">
                                 <labels>
                                   <label description="Billing period" languagecode="1033" />
                                 </labels>
@@ -28700,7 +28748,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{be9d38df-7933-4ec8-a30c-f8e310ec543c}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10007" solutionaction="Added">
+                              <cell id="{be9d38df-7933-4ec8-a30c-f8e310ec543c}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10008" solutionaction="Added">
                                 <labels>
                                   <label description="PledgeType" languagecode="1033" />
                                 </labels>
@@ -28708,7 +28756,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{df7337eb-430d-4d1f-9870-b7712d98b2a9}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10008" solutionaction="Added">
+                              <cell id="{df7337eb-430d-4d1f-9870-b7712d98b2a9}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10009" solutionaction="Added">
                                 <labels>
                                   <label description="Bank Account" languagecode="1033" />
                                 </labels>
@@ -28720,7 +28768,15 @@
                               </cell>
                             </row>
                             <row>
-                              <cell locklevel="0" id="{49f47868-9ccd-49a6-95f8-4cc9583de4ae}" colspan="1" rowspan="1" ordinalvalue="10009" solutionaction="Added">
+                              <cell id="{99412633-4213-4d25-a610-e8e5ad8d28cc}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10010" solutionaction="Added">
+                                <labels>
+                                  <label description="Payment Amount" languagecode="1033" />
+                                </labels>
+                                <control id="dnt_paymentamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="dnt_paymentamount" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell locklevel="0" id="{49f47868-9ccd-49a6-95f8-4cc9583de4ae}" colspan="1" rowspan="1" ordinalvalue="10011" solutionaction="Added">
                                 <labels>
                                   <label description="New QV control 1655522853485" languagecode="1033" />
                                 </labels>
@@ -28733,7 +28789,7 @@
                               </cell>
                             </row>
                             <row>
-                              <cell id="{4c3f0aad-87d4-440c-b2d3-f35f8f0b3011}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10010" solutionaction="Added">
+                              <cell id="{4c3f0aad-87d4-440c-b2d3-f35f8f0b3011}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10012" solutionaction="Added">
                                 <labels>
                                   <label description="First Donation Date" languagecode="1033" />
                                 </labels>
@@ -28788,6 +28844,26 @@
                                   <label description="Is Bookable" languagecode="1033" />
                                 </labels>
                                 <control disabled="false" id="msnfp_isbookable" classid="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}" datafieldname="msnfp_isbookable" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="{15979beb-ec79-4fc2-94bc-e1fad56e8c7a}_section_7" id="51949d68-8191-496a-b4a7-c07f219bcfa0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false" ordinalvalue="3" solutionaction="Added">
+                          <labels>
+                            <label description="New Section" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell locklevel="0" id="{162b1a3b-79c8-43cc-a417-f14a7219b7a5}" colspan="1" rowspan="1" ordinalvalue="10000">
+                                <labels>
+                                  <label description="contactaccountnumber" languagecode="1033" />
+                                </labels>
+                                <control id="contactaccountnumber" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="msnfp_pledgedbycontactid">
+                                  <parameters>
+                                    <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                                    <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;03520fba-890d-ed11-b83e-000d3a085067&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                                  </parameters>
+                                </control>
                               </cell>
                             </row>
                           </rows>
@@ -29024,21 +29100,14 @@
               <header id="{a7e48f5c-98d1-48fd-ac39-dda0da00c5eb}" columns="111">
                 <rows>
                   <row>
-                    <cell id="{11de8db9-f6ee-4185-9a18-572a81924c90}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10003" solutionaction="Added">
+                    <cell id="{11adeb5d-dacd-1ceb-2804-a9ee8e69579c}" locklevel="0" showlabel="true" ordinalvalue="10000" solutionaction="Removed" />
+                  </row>
+                  <row>
+                    <cell id="{11de8db9-f6ee-4185-9a18-572a81924c90}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000" solutionaction="Added">
                       <labels>
                         <label description="ID" languagecode="1033" />
                       </labels>
                       <control id="header_dnt_id" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="dnt_id" disabled="false" />
-                    </cell>
-                    <cell id="{b5e1cfdb-38bb-489b-aeee-3e723d16496e}" ordinalvalue="20004" solutionaction="Added">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{d2b9879b-800f-4081-b6b8-b829bb505a7d}" ordinalvalue="30005" solutionaction="Added">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
                     </cell>
                   </row>
                 </rows>
@@ -29096,6 +29165,11 @@
                 <event name="onchange" application="true" active="true" attribute="dnt_productid">
                   <Handlers>
                     <Handler functionName="Onchange_productid" libraryName="dnt_/msnfp_donorcommitment/onload.js" handlerUniqueId="{cfda6ebe-bc19-45ef-b2a0-3d3ce21d5620}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
+                  </Handlers>
+                </event>
+                <event name="onsave" application="false" active="false">
+                  <Handlers>
+                    <Handler functionName="OnSaveForm" libraryName="dnt_/msnfp_donorcommitment/onload.js" handlerUniqueId="{fa270590-2c36-4870-a4e3-cf0c83d7468b}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
                   </Handlers>
                 </event>
               </events>
@@ -48963,8 +49037,8 @@
       <TriggerOnDelete>0</TriggerOnDelete>
       <AsyncAutodelete>0</AsyncAutodelete>
       <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
-      <StateCode>1</StateCode>
-      <StatusCode>2</StatusCode>
+      <StateCode>0</StateCode>
+      <StatusCode>1</StatusCode>
       <RunAs>1</RunAs>
       <IsTransacted>1</IsTransacted>
       <IntroducedVersion>1.0.0.0</IntroducedVersion>
