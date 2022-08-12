@@ -1,0 +1,155 @@
+function OnLoadForm(executionContext)
+{
+    var formContext = executionContext.getFormContext();
+    var contact = formContext.getAttribute("msnfp_pledgedbycontactid").getValue();
+    var product = formContext.getAttribute("dnt_productid").getValue();
+
+    if (contact != null)
+    {
+        formContext.getControl("dnt_bankaccountid").setDisabled(false);
+
+        formContext.getControl("dnt_bankaccountid").addPreSearch(function()
+        {
+            var contactFilter = "<filter type='and'><condition attribute='dnt_contactid' operator='eq' value='" + contact[0].id + "' /></filter>";
+            formContext.getControl("dnt_bankaccountid").addCustomFilter(contactFilter, "dnt_bankaccount");
+        });
+    }
+    else
+    {
+        formContext.getControl("dnt_bankaccountid").setDisabled(true);
+        formContext.getAttribute("dnt_bankaccountid").setValue(null);
+    }
+
+    if (product != null)
+    {
+    	formContext.getControl("dnt_childrenid").setDisabled(false);
+        var productName = product[0].name;
+        if (productName.startsWith('國內資助款'))
+        {
+            formContext.getControl("dnt_childrenid").setDefaultView('{0953f374-1ad7-ec11-a7b5-0022485770c6}');
+        }
+        else if (productName.startsWith('國外資助款'))
+        {
+            formContext.getControl("dnt_childrenid").setDefaultView('{c140f983-1ad7-ec11-a7b5-0022485770c6}');
+        }
+        else
+        {
+            formContext.getControl("dnt_childrenid").setDisabled(true);
+            formContext.getAttribute("dnt_childrenid").setValue(null);
+        }
+    }
+    else
+    {
+        formContext.getControl("dnt_childrenid").setDisabled(true);
+        formContext.getAttribute("dnt_childrenid").setValue(null);
+    }
+}
+
+function Onchange_productid(executionContext)
+{
+	var formContext = executionContext.getFormContext();
+    var product = formContext.getAttribute("dnt_productid").getValue();
+    if (product != null)
+    {
+    	formContext.getControl("dnt_childrenid").setDisabled(false);
+        formContext.getAttribute("dnt_childrenid").setValue(null)
+        var productName = product[0].name;
+        if (productName.startsWith('國內資助款'))
+        {
+            formContext.getControl("dnt_childrenid").setDefaultView('{0953f374-1ad7-ec11-a7b5-0022485770c6}');
+        }
+        else if (productName.startsWith('國外資助款'))
+        {
+            formContext.getControl("dnt_childrenid").setDefaultView('{c140f983-1ad7-ec11-a7b5-0022485770c6}');
+        }
+        else
+        {
+            formContext.getControl("dnt_childrenid").setDisabled(true);
+            formContext.getAttribute("dnt_childrenid").setValue(null);
+        }
+    }
+    else
+    {
+        formContext.getControl("dnt_childrenid").setDisabled(true);
+        formContext.getAttribute("dnt_childrenid").setValue(null);
+    }
+}
+
+function Onchange_pledgedbycontactid(executionContext)
+{
+    var formContext = executionContext.getFormContext();
+    var contact = formContext.getAttribute("msnfp_pledgedbycontactid").getValue();
+
+    if (contact != null)
+    {
+        formContext.getControl("dnt_bankaccountid").setDisabled(false);
+        formContext.getControl("dnt_bankaccountid").addPreSearch(function()
+        {
+            var contactFilter = "<filter type='and'><condition attribute='dnt_contactid' operator='eq' value='" + contact[0].id + "' /></filter>";
+            formContext.getControl("dnt_bankaccountid").addCustomFilter(contactFilter, "dnt_bankaccount");
+        });
+        formContext.getAttribute("dnt_bankaccountid").setValue(null);
+    }
+    else
+    {
+        formContext.getControl("dnt_bankaccountid").setDisabled(true);
+        formContext.getAttribute("dnt_bankaccountid").setValue(null);
+    }
+}
+
+function Onchange_msnfp_commitment_defaultdesignationid(executionContext)
+{
+    var formContext = executionContext.getFormContext();
+    var designation = formContext.getAttribute("msnfp_commitment_defaultdesignationid").getValue();
+
+    if (designation == null)
+    {
+        formContext.getAttribute("msnfp_name").setValue("");
+    }
+    else
+    {
+        formContext.getAttribute("msnfp_name").setValue(designation[0].name);
+    }
+}
+
+function Hide_payment_schedule_subgrid_ribbon(executionContext)
+{
+    var ribbonName = "msnfp_paymentschedule\\|NoRelationship\\|SubGridStandard\\|Mscrm.SubGrid.msnfp_paymentschedule.AddNewStandard";
+    var associateRibbonName = "msnfp_paymentschedule\\|NoRelationship\\|SubGridAssociated\\|Mscrm.SubGrid.msnfp_paymentschedule.AddNewStandard";
+    var formContext = executionContext.getFormContext();
+    debugger;
+
+    var paymentScheduleSG = formContext.getControl("PaymentSchedule");
+    if (paymentScheduleSG)
+    {
+        paymentScheduleSG.addOnLoad(function()
+        {
+            debugger;
+            var count = paymentScheduleSG.getGrid().getTotalRecordCount();
+            if (count > 0)
+            {
+                setInterval(function()
+                {
+                    parent.$("[data-id='" + ribbonName + "'").hide();
+                    parent.$("[data-id='" + associateRibbonName + "'").hide();
+                }, 100);
+            }
+            // else{
+            // if(parent.$("[data-id='" + ribbonName + "'").length == 1){
+            // parent.$("[data-id='" + ribbonName + "'").show();
+            // }
+            // }
+        })
+    }
+}
+
+// function hide_ribbon(name){
+// if(parent.$("[data-id='" + name + "'").length == 0){
+// setTimeout(function(){
+// hide_ribbon(name);
+// }, 100);
+// }
+// else{
+// parent.$("[data-id='" + name + "'").hide();
+// }
+// }

@@ -1,0 +1,589 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "wvt_sharedcommondataserviceforapps_6eb19"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "wvt_sharedcommondataserviceforapps_1c2aa"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataservice": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "dnt_sharedcommondataservice_c0ba9"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Donor_Add": {
+          "metadata": {
+            "operationMetadataId": "315dd820-1883-4f18-8de4-ac45e3c44f9e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "_createdby_value ne 53e5f834-00ed-eb11-94ef-000d3ac91fe6 and _createdby_value ne a36582be-c4f5-eb11-94ef-00224856bd20"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initial_Host": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "54ab0902-7655-4de4-b230-586b9321dcf7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "host",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Configs": {
+          "runAfter": {
+            "Initial_Host": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7b9a61d0-24de-46ee-8951-6a13f088f16c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "wvt_configs",
+              "$filter": "wvt_name eq '[Azure]CorrespondenceWebAPIServerUrl'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Set_Url_To_Host": {
+          "foreach": "@outputs('Configs')?['body/value']",
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "94f3119a-6fc9-4f98-a928-8fa586297a2e"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "host",
+                "value": "@items('Set_Url_To_Host')?['wvt_value']"
+              }
+            }
+          },
+          "runAfter": {
+            "Configs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d8e5b2b6-6265-4333-b4b9-5db366e6c987"
+          },
+          "type": "Foreach"
+        },
+        "Set_UserName": {
+          "runAfter": {
+            "Set_Url_To_Host": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9460d6ae-5b42-4e3f-acd2-8947fe6c6b42"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "username",
+                "type": "string",
+                "value": "hellosanta"
+              }
+            ]
+          }
+        },
+        "Set_Password": {
+          "runAfter": {
+            "Set_UserName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2aa7753b-f451-4721-8e13-40f182a594fd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "password",
+                "type": "string",
+                "value": "-.DnY+3uYMWsdR"
+              }
+            ]
+          }
+        },
+        "Initial_Http_Body": {
+          "runAfter": {
+            "Set_Password": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "630626e4-e1c3-4a39-9aa6-4d374256f915"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "body",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Set_Body": {
+          "runAfter": {
+            "Condition_5": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4fe79268-e227-4eae-ba0c-4fa55eeafa34"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "body",
+            "value": "fullname=@{triggerOutputs()?['body/fullname']}\n&birth=@{triggerOutputs()?['body/birthdate']}\n&email=@{triggerOutputs()?['body/emailaddress1']}\n&identification_id=@{triggerOutputs()?['body/wvt_identifyno']}\n&identification_type=@{triggerOutputs()?['body/dnt_identification_type']}\n&address=@{triggerOutputs()?['body/address1_line1']}\n&district=@{triggerOutputs()?['body/address1_county']}\n&post_code=@{triggerOutputs()?['body/address1_postalcode']}\n&country_code=@{variables('CountryCode')}\n&phone=@{triggerOutputs()?['body/telephone1']}\n&gender=@{triggerOutputs()?['body/gendercode']}\n&salutation=@{if(equals(triggerOutputs()?['body/dnt_salutation'],0),'mr',if(equals(triggerOutputs()?['body/dnt_salutation'],1),'ms',if(equals(triggerOutputs()?['body/dnt_salutation'],2),'company','')))}\n&registered_at=@{triggerOutputs()?['body/dnt_registered_at']}\n&receipt_preference=@{if(equals(triggerOutputs()?['body/dnt_receipt_preference'], null), null, mod(triggerOutputs()?['body/dnt_receipt_preference'],1000))}\n&receipt_title=@{triggerOutputs()?['body/dnt_receipt_title']}\n&motivation_code=@{variables('Motivation')}\n&created_user=@{variables('UserEmailName')}\n&created_at=@{formatDateTime(triggerOutputs()?['body/createdon'], 'yyyy-MM-dd hh:mm:ss')}"
+          }
+        },
+        "HTTP": {
+          "runAfter": {
+            "Set_Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "18ffcb87-3a03-479b-a27d-8ebc78df5b9c"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "@{variables('host')}/donor",
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "body": "@uriComponentToString(replace(uriComponent(variables('body')), '%0A', ''))",
+            "authentication": {
+              "type": "Basic",
+              "username": "@variables('username')",
+              "password": "@variables('password')"
+            }
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b2e57443-08c4-4bdf-88d3-f966a1d19709"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@body('HTTP')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer"
+                },
+                "rtn_code": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                },
+                "rtn_msg": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "object",
+                  "properties": {
+                    "donor_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "rtn_code",
+                "rtn_msg"
+              ]
+            }
+          }
+        },
+        "Response_Code_Is_Eqaul_To_200": {
+          "actions": {
+            "Update_Contact": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "4420b34d-be0c-42d0-b0a4-14d8951f7914"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/contactid']",
+                  "item/msnfp_contactaccountnumber": "@body('Response')?['result']?['donor_id']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Response": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Add_a_new_row": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "618243b1-d60d-464e-b9d1-0b978be1f4c5"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataservice",
+                    "operationId": "PostItem_V2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+                  },
+                  "parameters": {
+                    "dataset": "default.cds",
+                    "table": "syncerrors",
+                    "item/name": "contact",
+                    "item/errortime": "@utcNow()",
+                    "item/description": "Response Error",
+                    "item/errorcode": "@body('Response')['status']",
+                    "item/errordetail": "HTTP Response Error when Donor Add Automate Execute",
+                    "item/errormessage": "@body('Response')['rtn_msg']",
+                    "item/_ownerid_type": "",
+                    "item/_regardingobjectid_value": "@triggerOutputs()?['body/contactid']",
+                    "item/_regardingobjectid_type": "contacts"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Response_Error": {
+                "runAfter": {
+                  "Add_a_new_row": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ad3ff843-cc52-426c-9d21-9d406f4b0708"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Failed",
+                  "runError": {
+                    "code": "Response Error Code : @{body('Response')['status']}",
+                    "message": "Error Message : @{body('Response')['rtn_msg']}"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@body('Response')['status']",
+              200
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4e7aaafe-232f-4c7d-9894-13ba5e6db231"
+          },
+          "type": "If"
+        },
+        "Initial_Motivation_Code": {
+          "runAfter": {
+            "Initial_Http_Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "075d58f8-4cd7-4046-819d-f680cfe5faa9"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Motivation",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Motivation_Is_Not_Equal_To_Null": {
+          "actions": {
+            "Campaign_Activity": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "556826e9-abe0-4c5c-bbb3-24abb077ea2c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "campaignactivities",
+                  "recordId": "@triggerOutputs()?['body/_dnt_campaignactivityid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_variable_2": {
+              "runAfter": {
+                "Campaign_Activity": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "31cc70b1-e54e-4d8c-b431-efe41559f270"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Motivation",
+                "value": "@outputs('Campaign_Activity')?['body/wvt_code']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initial_Motivation_Code": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_dnt_campaignactivityid_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "4a3eb59c-066c-4bdd-8d4c-efb50ea3d078"
+          },
+          "type": "If"
+        },
+        "Initail_CountryCode": {
+          "runAfter": {
+            "Motivation_Is_Not_Equal_To_Null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9107e781-71e8-4351-8880-d300d2ff4a59"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "CountryCode",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Country_Is_Not_Equal_To_Null": {
+          "actions": {
+            "Country": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "49544173-d9a9-4f67-af04-c2e5544bf27e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "wvt_countries",
+                  "recordId": "@triggerOutputs()?['body/_wvt_countryid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_variable_3": {
+              "runAfter": {
+                "Country": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fc607446-2bd8-45a3-9d69-dae953126019"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "CountryCode",
+                "value": "@outputs('Country')?['body/wvt_name']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initail_CountryCode": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_wvt_countryid_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "94fb8a73-86c9-47d0-896c-6135f3b4284c"
+          },
+          "type": "If"
+        },
+        "Initialize_UserEmailName": {
+          "runAfter": {
+            "Country_Is_Not_Equal_To_Null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b4961774-e2e1-4ca7-8cb2-49b16791c0a1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "UserEmailName",
+                "type": "string",
+                "value": "D365_API"
+              }
+            ]
+          }
+        },
+        "User": {
+          "runAfter": {
+            "Initialize_UserEmailName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a2956866-ef3f-4405-91b0-d9d546a813de"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_createdby_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_5": {
+          "actions": {
+            "Set_variable_4": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a15cb291-e840-40d8-9c33-4ba019070032"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "UserEmailName",
+                "value": "@{concat('WORLDVISION\\', toUpper(first(split(outputs('User')?['body/internalemailaddress'], '@'))))}"
+              }
+            }
+          },
+          "runAfter": {
+            "User": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('User')?['body/preferredemailcode']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "67d9cf9f-d809-4b39-b25d-7a3086e1539c"
+          },
+          "type": "If"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

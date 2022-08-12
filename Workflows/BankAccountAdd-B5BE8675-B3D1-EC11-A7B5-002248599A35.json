@@ -1,0 +1,698 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "wvt_sharedcommondataserviceforapps_1c2aa"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataservice": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "dnt_sharedcommondataservice_c0ba9"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "wvt_sharedcommondataserviceforapps_6eb19"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Bank_Account_Add": {
+          "metadata": {
+            "operationMetadataId": "b8a645ae-9f8f-437c-a5cb-ff80920ee269"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "dnt_bankaccount",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "_createdby_value ne 53e5f834-00ed-eb11-94ef-000d3ac91fe6 and _createdby_value ne a36582be-c4f5-eb11-94ef-00224856bd20"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initial_Host": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "78d6a25f-04dc-434f-947e-1b229b46b4db"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "host",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Configs": {
+          "runAfter": {
+            "Initial_Host": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "036011bd-ce54-4fd6-8c2a-2528300f5ad0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "wvt_configs",
+              "$filter": "wvt_name eq '[Azure]CorrespondenceWebAPIServerUrl'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Set_Url_To_Host": {
+          "foreach": "@outputs('Configs')?['body/value']",
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "80da5ab9-a49d-4f31-88df-4e7633f390cd"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "host",
+                "value": "@items('Set_Url_To_Host')?['wvt_value']"
+              }
+            }
+          },
+          "runAfter": {
+            "Configs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4d7e3636-ff33-40fa-a0be-46d2f433f6dc"
+          },
+          "type": "Foreach"
+        },
+        "Set_UserName": {
+          "runAfter": {
+            "Set_Url_To_Host": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "098eb3e6-c56b-4f73-afc8-be9e20485866"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "username",
+                "type": "string",
+                "value": "hellosanta"
+              }
+            ]
+          }
+        },
+        "Set_Password": {
+          "runAfter": {
+            "Set_UserName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2daf2dc9-a954-47ab-a9db-54197ba44633"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "password",
+                "type": "string",
+                "value": "-.DnY+3uYMWsdR"
+              }
+            ]
+          }
+        },
+        "Initial_Http_Body": {
+          "runAfter": {
+            "Set_Password": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "da39a4c7-3743-44f7-8394-d5ccdaf37c93"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "body",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initial_Donor_ID": {
+          "runAfter": {
+            "Initial_Http_Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "aef0d1bd-755b-40a5-ade4-27fb2c67e200"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "donor_id",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Donor_ID_Is_Not_Equal_To_Null": {
+          "actions": {
+            "Contacts": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "62975439-71c2-40ca-b1f1-e8fca9bad295"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_dnt_contactid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_Donor_ID": {
+              "runAfter": {
+                "Contacts": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "aca5028f-8a59-49bd-b141-483afb094d50"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "donor_id",
+                "value": "@outputs('Contacts')?['body/msnfp_contactaccountnumber']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initial_Donor_ID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Sync_Errors_Donor_ID_Is_Null": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "5363647a-5ade-47f5-819f-5c9b5daaf594"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataservice",
+                    "operationId": "PostItem_V2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+                  },
+                  "parameters": {
+                    "dataset": "default.cds",
+                    "table": "syncerrors",
+                    "item/name": "dnt_bankaccount",
+                    "item/errortime": "@utcNow()",
+                    "item/description": "Donor ID Is Null",
+                    "item/errordetail": "Donor ID Is Null when Bank Account Add Automate Excute",
+                    "item/errortype": 1,
+                    "item/_ownerid_type": "",
+                    "item/_regardingobjectid_value": "@triggerOutputs()?['body/dnt_bankaccountid']",
+                    "item/_regardingobjectid_type": "dnt_bankaccounts"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Donor_ID_Is_Null": {
+                "runAfter": {
+                  "Sync_Errors_Donor_ID_Is_Null": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "7acad3c0-1cd0-4b5a-85c1-bfc77fa4f5a2"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Failed",
+                  "runError": {
+                    "code": "Donor ID Is Null",
+                    "message": "Donor ID Is Null"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_dnt_contactid_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "2c8b0a2f-dbea-4d18-b282-e85bff6cfd69"
+          },
+          "type": "If"
+        },
+        "Payment_Method_Code_Is_Not_Equal_To_Null": {
+          "actions": {
+            "Payment_Method_Codes": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "24fd3efa-44d6-46fe-abb9-ee5f9614a977"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "dnt_paymentmethodcodes",
+                  "recordId": "@triggerOutputs()?['body/_dnt_paymentmethodcodeid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_Payment_Method": {
+              "runAfter": {
+                "Payment_Method_Codes": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "040b5d69-b609-48f9-a4b0-1f42eb63b060"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "payment_method",
+                "value": "@outputs('Payment_Method_Codes')?['body/dnt_code']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initial_Payment_Method": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Sync_Errors_Payment_Method_Code_Is_Null": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "8e63dbe0-2e64-4085-b8c2-c86e8655b7a8"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataservice",
+                    "operationId": "PostItem_V2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+                  },
+                  "parameters": {
+                    "dataset": "default.cds",
+                    "table": "syncerrors",
+                    "item/name": "dnt_bankaccount",
+                    "item/errortime": "@utcNow()",
+                    "item/description": "Payment Method Code Is Null",
+                    "item/errordetail": "Payment Method Code Is Null when Bank Account Add Automate Excute",
+                    "item/errortype": 1,
+                    "item/_ownerid_type": "",
+                    "item/_regardingobjectid_value": "@triggerOutputs()?['body/dnt_bankaccountid']",
+                    "item/_regardingobjectid_type": "dnt_bankaccounts"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Payment_Method_Code_Is_Null": {
+                "runAfter": {
+                  "Sync_Errors_Payment_Method_Code_Is_Null": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "e11e38bd-7472-4f5b-a520-6f3e8955367f"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Failed",
+                  "runError": {
+                    "code": "Payment Method Code Is Null",
+                    "message": "Payment Method Code Is Null"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_dnt_paymentmethodcodeid_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "bcbef403-541f-4481-9e25-f772d4d62acb"
+          },
+          "type": "If"
+        },
+        "Set_Body": {
+          "runAfter": {
+            "Condition_5": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "601364d9-721e-4046-9d6f-51ea834e872c"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "body",
+            "value": "donor_id=@{variables('donor_id')}\n&payment_method=@{variables('payment_method')}\n&created_user=@{variables('UserEmailName')}\n&created_at=@{formatDateTime(triggerOutputs()?['body/createdon'], 'yyyy-MM-dd hh:mm')}"
+          }
+        },
+        "HTTP": {
+          "runAfter": {
+            "Set_Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5658a21-4ae6-4305-b738-ba95ca06d0aa"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "POST",
+            "uri": "@{variables('host')}/donor-bank",
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "body": "@uriComponentToString(replace(uriComponent(variables('body')), '%0A', ''))",
+            "authentication": {
+              "type": "Basic",
+              "username": "@variables('username')",
+              "password": "@variables('password')"
+            }
+          }
+        },
+        "Response_Code_Is_Eqaul_To_200": {
+          "actions": {
+            "Update_Bank_Account": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "229a0663-1b18-40f0-9517-792a7f40e83f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "dnt_bankaccounts",
+                  "recordId": "@triggerOutputs()?['body/dnt_bankaccountid']",
+                  "item/dnt_code": "@body('Response')?['result']?['bank_code']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Response": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Sync_Errors_Response_Error": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "0c1e331a-e35d-4066-bb5a-71223fe72e07"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataservice",
+                    "operationId": "PostItem_V2",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataservice"
+                  },
+                  "parameters": {
+                    "dataset": "default.cds",
+                    "table": "syncerrors",
+                    "item/name": "dnt_bankaccount",
+                    "item/errortime": "@utcNow()",
+                    "item/description": "Response Error",
+                    "item/errorcode": "@body('Response')['status']",
+                    "item/errordetail": "HTTP Response Error when Bank Account Add Automate Excute",
+                    "item/errormessage": "@body('Response')['rtn_msg']",
+                    "item/errortype": 3,
+                    "item/_ownerid_type": "",
+                    "item/_regardingobjectid_value": "@triggerOutputs()?['body/dnt_bankaccountid']",
+                    "item/_regardingobjectid_type": "dnt_bankaccounts"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Response_Error": {
+                "runAfter": {
+                  "Sync_Errors_Response_Error": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "8a03e3d3-1eb5-4672-addf-675f00d2e894"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Failed",
+                  "runError": {
+                    "code": "Response Error Code : @{body('Response')['status']}",
+                    "message": "Error Message : @{body('Response')['rtn_msg']}"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@body('Response')['status']",
+              200
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "46657c58-8543-4ab1-a7e4-1afba44b9c7e"
+          },
+          "type": "If"
+        },
+        "Initial_Payment_Method": {
+          "runAfter": {
+            "Donor_ID_Is_Not_Equal_To_Null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d4809978-3b65-46c3-a9e8-f51eaa687057"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "payment_method",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "95fd840b-69b5-4a31-8138-e923bafc9bb9"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@body('HTTP')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer"
+                },
+                "rtn_code": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                },
+                "rtn_msg": {
+                  "type": "string"
+                },
+                "result": {
+                  "type": "object",
+                  "properties": {
+                    "donor_id": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "bank_code": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    }
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "rtn_code",
+                "rtn_msg"
+              ]
+            }
+          }
+        },
+        "Initialize_UserEmailName": {
+          "runAfter": {
+            "Payment_Method_Code_Is_Not_Equal_To_Null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b4961774-e2e1-4ca7-8cb2-49b16791c0a1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "UserEmailName",
+                "type": "string",
+                "value": "D365_API"
+              }
+            ]
+          }
+        },
+        "User": {
+          "runAfter": {
+            "Initialize_UserEmailName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a2956866-ef3f-4405-91b0-d9d546a813de"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_createdby_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_5": {
+          "actions": {
+            "Set_variable_4": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a15cb291-e840-40d8-9c33-4ba019070032"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "UserEmailName",
+                "value": "@{concat('WORLDVISION\\', toUpper(first(split(outputs('User')?['body/internalemailaddress'], '@'))))}"
+              }
+            }
+          },
+          "runAfter": {
+            "User": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('User')?['body/preferredemailcode']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "67d9cf9f-d809-4b39-b25d-7a3086e1539c"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

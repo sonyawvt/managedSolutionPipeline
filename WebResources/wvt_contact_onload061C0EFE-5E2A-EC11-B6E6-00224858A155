@@ -1,0 +1,18 @@
+function contact_onload(executionContext){
+let windowObjectReference = window.open('http://worldvision.crm5.dynamics.com//WebResources/wvt_cti_first_page.html', 'wvt_cti_first_page');
+}
+
+function setDonorFieldRequired(executionContext) {
+    var formContext = formContext = executionContext.getFormContext();
+
+	var requiredFilrds = [
+		"address1_county", "address1_line1", "address1_postalcode", "birthdate", "telephone1",
+		"emailaddress1", "gendercode", "dnt_campaignactivityid", "wvt_countryid", "dnt_receipt_preference",
+		"dnt_salutation"
+	];
+	
+	for(var i = 0; i < requiredFilrds.length; i++){
+		if(formContext.getAttribute(requiredFilrds[i]))
+			formContext.getAttribute(requiredFilrds[i]).setRequiredLevel("none");
+	}
+}

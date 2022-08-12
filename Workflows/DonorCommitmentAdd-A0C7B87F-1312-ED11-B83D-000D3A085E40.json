@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "impersonation": {},
+        "runtimeSource": "embedded",
+        "connection": {},
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Donor_Commitment_Add": {
+          "metadata": {
+            "operationMetadataId": "17be1da9-e7d3-420b-a508-532dd593c8ce"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "msnfp_donorcommitment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "_createdby_value ne 53e5f834-00ed-eb11-94ef-000d3ac91fe6 and _createdby_value ne a36582be-c4f5-eb11-94ef-00224856bd20"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "221028e4-cece-41f6-9bdb-5206d39e37fc"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord"
+            },
+            "parameters": {
+              "entityName": "msnfp_paymentschedules",
+              "item/msnfp_name": "@triggerOutputs()?['body/msnfp_name']",
+              "item/msnfp_recurringamount": "@triggerOutputs()?['body/dnt_paymentamount']",
+              "item/msnfp_PaymentSchedule_DonorCommitmentId@odata.bind": "msnfp_donorcommitments(@{triggerOutputs()?['body/msnfp_donorcommitmentid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,13 @@
+function Onchange_dnt_paymentmethodcodeid(executionContext) {
+	var formContext = executionContext.getFormContext();
+	var paymentmethodcode = formContext.getAttribute("dnt_paymentmethodcodeid").getValue();
+
+	if(paymentmethodcode == null)
+	{
+		formContext.getAttribute("dnt_name").setValue("");
+	}
+	else
+	{
+		formContext.getAttribute("dnt_name").setValue(paymentmethodcode[0].name);
+	}
+}
