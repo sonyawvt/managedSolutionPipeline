@@ -4820,9 +4820,10 @@
                   </customControl>
                 </controlDescription>
               </controlDescriptions>
-              <DisplayConditions FallbackForm="true" Order="6">
+              <DisplayConditions FallbackForm="true" Order="1">
                 <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
                 <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+                <Role Id="{54DC4337-2F78-EC11-8D21-0022485A8592}" />
               </DisplayConditions>
               <formLibraries>
                 <Library name="msdyn_talkingpointsloader.js" libraryUniqueId="{30d6d0a4-d097-b9be-cc6e-5722727be490}" />
@@ -6952,7 +6953,7 @@
                     </column>
                   </columns>
                 </tab>
-                <tab name="tab_administrative" id="{77ec6454-3ab4-daa7-b7d9-5c0116a11d7b}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" ordinalvalue="2" solutionaction="Modified">
+                <tab name="tab_administrative" id="{77ec6454-3ab4-daa7-b7d9-5c0116a11d7b}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" ordinalvalue="3" solutionaction="Modified">
                   <columns>
                     <column width="100%" id="0">
                       <sections>
@@ -7063,6 +7064,40 @@
                                     <RelationshipName>msnfp_commitment_pledgedByContact</RelationshipName>
                                   </parameters>
                                 </control>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                      </sections>
+                    </column>
+                  </columns>
+                </tab>
+                <tab name="tab_4" id="5bfb8f25-1a55-497b-a657-684f9479bc7b" IsUserDefined="0" locklevel="0" showlabel="true" ordinalvalue="2" solutionaction="Added">
+                  <labels>
+                    <label description="AllenTest" languagecode="1033" />
+                  </labels>
+                  <columns>
+                    <column width="100%" id="0">
+                      <sections>
+                        <section name="tab_4_section_1" id="3c4dd124-ac55-4646-b7e0-a26b953c3682" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="0">
+                          <labels>
+                            <label description="New Section" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="{f994f39f-7f44-4971-89a7-03b63104f776}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10000">
+                                <labels>
+                                  <label description="Email" languagecode="1033" />
+                                </labels>
+                                <control id="emailaddress1" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{2cb845a8-1a2f-434b-ab44-985a1b025fed}" locklevel="0" colspan="1" rowspan="1" ordinalvalue="10001">
+                                <labels>
+                                  <label description="Business Phone" languagecode="1033" />
+                                </labels>
+                                <control id="telephone1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
                               </cell>
                             </row>
                           </rows>
@@ -9641,6 +9676,26 @@
                             </row>
                           </rows>
                         </section>
+                        <section name="null_section_3" id="c6ba66c5-aed7-4d46-8363-fb52c90a10ac" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                          <labels>
+                            <label description="New Section" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell locklevel="0" id="{3edaf930-503a-4903-bff5-9d3865e172de}" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="contactaccountnumber" languagecode="1033" />
+                                </labels>
+                                <control id="contactaccountnumber" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="dnt_contactid">
+                                  <parameters>
+                                    <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                                    <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="contact"&gt;03520fba-890d-ed11-b83e-000d3a085067&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                                  </parameters>
+                                </control>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
                       </sections>
                     </column>
                   </columns>
@@ -9984,6 +10039,11 @@
                     <Handler functionName="Onchange_dnt_paymentmethodcodeid" libraryName="dnt_/dnt_bankaccount/onload.js" handlerUniqueId="{f6f8a528-1a6b-4aa8-b41d-27bd99753803}" enabled="true" parameters="" passExecutionContext="true" />
                   </Handlers>
                 </event>
+                <event name="onsave" application="false" active="false">
+                  <Handlers>
+                    <Handler functionName="OnSaveForm" libraryName="dnt_/dnt_bankaccount/onload.js" handlerUniqueId="{6b4f4f96-80c3-4d8b-8fbb-c1933d1730a2}" enabled="true" parameters="" passExecutionContext="true" />
+                  </Handlers>
+                </event>
               </events>
             </form>
             <IsCustomizable>1</IsCustomizable>
@@ -10062,6 +10122,14 @@
                                   <label description="Last Four Digit CC" languagecode="1033" />
                                 </labels>
                                 <control id="dnt_lastfourdigitcc" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="dnt_lastfourdigitcc" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{1423121e-6800-4d71-92b9-6ba44cd41ffa}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                                <labels>
+                                  <label description="Code" languagecode="1033" />
+                                </labels>
+                                <control id="dnt_code" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="dnt_code" disabled="false" />
                               </cell>
                             </row>
                           </rows>
@@ -13734,1400 +13802,6 @@
             </LocalizedNames>
             <Descriptions>
               <Description description="屬於我的使用中Designation Categories" languagecode="1033" />
-            </Descriptions>
-          </savedquery>
-        </savedqueries>
-      </SavedQueries>
-      <RibbonDiffXml>
-        <CustomActions />
-        <Templates>
-          <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
-        </Templates>
-        <CommandDefinitions />
-        <RuleDefinitions>
-          <TabDisplayRules />
-          <DisplayRules />
-          <EnableRules />
-        </RuleDefinitions>
-        <LocLabels />
-      </RibbonDiffXml>
-    </Entity>
-    <Entity>
-      <Name LocalizedName="X Designation Suncategory" OriginalName="Designation Suncategory">dnt_DesignationSuncategory</Name>
-      <EntityInfo>
-        <entity Name="dnt_DesignationSuncategory">
-          <LocalizedNames>
-            <LocalizedName description="X Designation Suncategory" languagecode="1033" />
-          </LocalizedNames>
-          <LocalizedCollectionNames>
-            <LocalizedCollectionName description="X Designation Suncategories" languagecode="1033" />
-          </LocalizedCollectionNames>
-          <Descriptions>
-            <Description description="科目的子分類, 用來判斷捐款類型&#xA;(資助人 、 捐款人)" languagecode="1033" />
-          </Descriptions>
-          <attributes>
-            <attribute PhysicalName="CreatedBy">
-              <Type>lookup</Type>
-              <Name>createdby</Name>
-              <LogicalName>createdby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Created By" languagecode="1033" />
-                <displayname description="建立者" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-                <Description description="建立記錄之使用者的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="CreatedOn">
-              <Type>datetime</Type>
-              <Name>createdon</Name>
-              <LogicalName>createdon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>datetime</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Created On" languagecode="1033" />
-                <displayname description="建立時間" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time when the record was created." languagecode="1033" />
-                <Description description="記錄的建立日期與時間。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="CreatedOnBehalfBy">
-              <Type>lookup</Type>
-              <Name>createdonbehalfby</Name>
-              <LogicalName>createdonbehalfby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Created By (Delegate)" languagecode="1033" />
-                <displayname description="建立者 (代理人)" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the delegate user who created the record." languagecode="1033" />
-                <Description description="建立記錄之委派使用者的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="dnt_DesignationSuncategoryId">
-              <Type>primarykey</Type>
-              <Name>dnt_designationsuncategoryid</Name>
-              <LogicalName>dnt_designationsuncategoryid</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|RequiredForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <displaynames>
-                <displayname description="Designation Suncategory" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for entity instances" languagecode="1033" />
-                <Description description="實體執行個體的唯一識別碼" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="dnt_Name">
-              <Type>nvarchar</Type>
-              <Name>dnt_name</Name>
-              <LogicalName>dnt_name</LogicalName>
-              <RequiredLevel>required</RequiredLevel>
-              <DisplayMask>PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>1</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>text</Format>
-              <MaxLength>100</MaxLength>
-              <Length>200</Length>
-              <displaynames>
-                <displayname description="Name" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ImportSequenceNumber">
-              <Type>int</Type>
-              <Name>importsequencenumber</Name>
-              <LogicalName>importsequencenumber</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind</DisplayMask>
-              <ImeMode>disabled</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-2147483648</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="Import Sequence Number" languagecode="1033" />
-                <displayname description="匯入序號" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Sequence number of the import that created this record." languagecode="1033" />
-                <Description description="建立此記錄的匯入序號。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedBy">
-              <Type>lookup</Type>
-              <Name>modifiedby</Name>
-              <LogicalName>modifiedby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Modified By" languagecode="1033" />
-                <displayname description="修改者" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-                <Description description="修改記錄之使用者的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedOn">
-              <Type>datetime</Type>
-              <Name>modifiedon</Name>
-              <LogicalName>modifiedon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>datetime</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Modified On" languagecode="1033" />
-                <displayname description="修改日期" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time when the record was modified." languagecode="1033" />
-                <Description description="記錄的修改日期與時間。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedOnBehalfBy">
-              <Type>lookup</Type>
-              <Name>modifiedonbehalfby</Name>
-              <LogicalName>modifiedonbehalfby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Modified By (Delegate)" languagecode="1033" />
-                <displayname description="修改者 (代理人)" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the delegate user who modified the record." languagecode="1033" />
-                <Description description="修改記錄之委派使用者的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OverriddenCreatedOn">
-              <Type>datetime</Type>
-              <Name>overriddencreatedon</Name>
-              <LogicalName>overriddencreatedon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>date</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Record Created On" languagecode="1033" />
-                <displayname description="記錄建立時間" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time that the record was migrated." languagecode="1033" />
-                <Description description="移轉記錄的日期與時間。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwnerId">
-              <Type>owner</Type>
-              <Name>ownerid</Name>
-              <LogicalName>ownerid</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes>
-                <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
-                <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
-              </LookupTypes>
-              <displaynames>
-                <displayname description="Owner" languagecode="1033" />
-                <displayname description="負責人" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Owner Id" languagecode="1033" />
-                <Description description="負責人編號" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningBusinessUnit">
-              <Type>lookup</Type>
-              <Name>owningbusinessunit</Name>
-              <LogicalName>owningbusinessunit</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning Business Unit" languagecode="1033" />
-                <displayname description="擁有業務單位" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-                <Description description="記錄所屬業務單位的唯一識別碼" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningTeam">
-              <Type>lookup</Type>
-              <Name>owningteam</Name>
-              <LogicalName>owningteam</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsLogical>1</IsLogical>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning Team" languagecode="1033" />
-                <displayname description="擁有團隊" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-                <Description description="記錄所屬團隊的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningUser">
-              <Type>lookup</Type>
-              <Name>owninguser</Name>
-              <LogicalName>owninguser</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsLogical>1</IsLogical>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning User" languagecode="1033" />
-                <displayname description="擁有使用者" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-                <Description description="記錄所屬使用者的唯一識別碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="statecode">
-              <Type>state</Type>
-              <Name>statecode</Name>
-              <LogicalName>statecode</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <optionset Name="dnt_designationsuncategory_statecode">
-                <OptionSetType>state</OptionSetType>
-                <IntroducedVersion>1.0</IntroducedVersion>
-                <IsCustomizable>1</IsCustomizable>
-                <displaynames>
-                  <displayname description="Status" languagecode="1033" />
-                  <displayname description="狀態" languagecode="1028" />
-                </displaynames>
-                <Descriptions>
-                  <Description description="Status of the Designation Suncategory" languagecode="1033" />
-                  <Description description="Designation Suncategory的狀態" languagecode="1028" />
-                </Descriptions>
-                <states>
-                  <state value="0" defaultstatus="1" invariantname="Active">
-                    <labels>
-                      <label description="Active" languagecode="1033" />
-                      <label description="使用中" languagecode="1028" />
-                    </labels>
-                  </state>
-                  <state value="1" defaultstatus="2" invariantname="Inactive">
-                    <labels>
-                      <label description="Inactive" languagecode="1033" />
-                      <label description="非使用中" languagecode="1028" />
-                    </labels>
-                  </state>
-                </states>
-              </optionset>
-              <displaynames>
-                <displayname description="Status" languagecode="1033" />
-                <displayname description="狀態" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Status of the Designation Suncategory" languagecode="1033" />
-                <Description description="Designation Suncategory的狀態" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="statuscode">
-              <Type>status</Type>
-              <Name>statuscode</Name>
-              <LogicalName>statuscode</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <optionset Name="dnt_designationsuncategory_statuscode">
-                <OptionSetType>status</OptionSetType>
-                <IntroducedVersion>1.0</IntroducedVersion>
-                <IsCustomizable>1</IsCustomizable>
-                <displaynames>
-                  <displayname description="Status Reason" languagecode="1033" />
-                  <displayname description="狀態原因" languagecode="1028" />
-                </displaynames>
-                <Descriptions>
-                  <Description description="Reason for the status of the Designation Suncategory" languagecode="1033" />
-                  <Description description="Designation Suncategory的狀態原因" languagecode="1028" />
-                </Descriptions>
-                <statuses>
-                  <status value="1" state="0">
-                    <labels>
-                      <label description="Active" languagecode="1033" />
-                      <label description="使用中" languagecode="1028" />
-                    </labels>
-                  </status>
-                  <status value="2" state="1">
-                    <labels>
-                      <label description="Inactive" languagecode="1033" />
-                      <label description="非使用中" languagecode="1028" />
-                    </labels>
-                  </status>
-                </statuses>
-              </optionset>
-              <displaynames>
-                <displayname description="Status Reason" languagecode="1033" />
-                <displayname description="狀態原因" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Reason for the status of the Designation Suncategory" languagecode="1033" />
-                <Description description="Designation Suncategory的狀態原因" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="TimeZoneRuleVersionNumber">
-              <Type>int</Type>
-              <Name>timezoneruleversionnumber</Name>
-              <LogicalName>timezoneruleversionnumber</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-1</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="Time Zone Rule Version Number" languagecode="1033" />
-                <displayname description="時區規則版本號碼" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="For internal use only." languagecode="1033" />
-                <Description description="僅供內部使用。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="UTCConversionTimeZoneCode">
-              <Type>int</Type>
-              <Name>utcconversiontimezonecode</Name>
-              <LogicalName>utcconversiontimezonecode</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-1</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="UTC Conversion Time Zone Code" languagecode="1033" />
-                <displayname description="UTC 轉換時區代碼" languagecode="1028" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Time zone code that was in use when the record was created." languagecode="1033" />
-                <Description description="建立記錄時使用的時區代碼。" languagecode="1028" />
-              </Descriptions>
-            </attribute>
-          </attributes>
-          <EntitySetName>dnt_designationsuncategories</EntitySetName>
-          <IsDuplicateCheckSupported>1</IsDuplicateCheckSupported>
-          <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>
-          <IsRequiredOffline>0</IsRequiredOffline>
-          <IsInteractionCentricEnabled>0</IsInteractionCentricEnabled>
-          <IsCollaboration>0</IsCollaboration>
-          <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
-          <IsConnectionsEnabled>0</IsConnectionsEnabled>
-          <EntityColor></EntityColor>
-          <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
-          <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
-          <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
-          <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>
-          <IsSLAEnabled>0</IsSLAEnabled>
-          <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
-          <IsBPFEntity>0</IsBPFEntity>
-          <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
-          <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
-          <IsActivity>0</IsActivity>
-          <ActivityTypeMask></ActivityTypeMask>
-          <IsActivityParty>0</IsActivityParty>
-          <IsReplicated>0</IsReplicated>
-          <IsReplicationUserFiltered>0</IsReplicationUserFiltered>
-          <IsMailMergeEnabled>1</IsMailMergeEnabled>
-          <IsVisibleInMobile>0</IsVisibleInMobile>
-          <IsVisibleInMobileClient>0</IsVisibleInMobileClient>
-          <IsReadOnlyInMobileClient>0</IsReadOnlyInMobileClient>
-          <IsOfflineInMobileClient>0</IsOfflineInMobileClient>
-          <DaysSinceRecordLastModified>0</DaysSinceRecordLastModified>
-          <MobileOfflineFilters></MobileOfflineFilters>
-          <IsMapiGridEnabled>1</IsMapiGridEnabled>
-          <IsReadingPaneEnabled>1</IsReadingPaneEnabled>
-          <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
-          <SyncToExternalSearchIndex>0</SyncToExternalSearchIndex>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <IsMappable>1</IsMappable>
-          <CanModifyAuditSettings>1</CanModifyAuditSettings>
-          <CanModifyMobileVisibility>1</CanModifyMobileVisibility>
-          <CanModifyMobileClientVisibility>1</CanModifyMobileClientVisibility>
-          <CanModifyMobileClientReadOnly>1</CanModifyMobileClientReadOnly>
-          <CanModifyMobileClientOffline>1</CanModifyMobileClientOffline>
-          <CanModifyConnectionSettings>1</CanModifyConnectionSettings>
-          <CanModifyDuplicateDetectionSettings>1</CanModifyDuplicateDetectionSettings>
-          <CanModifyMailMergeSettings>1</CanModifyMailMergeSettings>
-          <CanModifyQueueSettings>1</CanModifyQueueSettings>
-          <CanCreateAttributes>1</CanCreateAttributes>
-          <CanCreateForms>1</CanCreateForms>
-          <CanCreateCharts>1</CanCreateCharts>
-          <CanCreateViews>1</CanCreateViews>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <CanEnableSyncToExternalSearchIndex>1</CanEnableSyncToExternalSearchIndex>
-          <IconVectorName></IconVectorName>
-          <EnforceStateTransitions>0</EnforceStateTransitions>
-          <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
-          <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
-          <EntityHelpUrl></EntityHelpUrl>
-          <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
-          <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
-          <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
-          <IsSolutionAware>0</IsSolutionAware>
-        </entity>
-      </EntityInfo>
-      <FormXml>
-        <forms type="card">
-          <systemform>
-            <formid>{12780a02-02ee-4de6-b2b6-322d2b8f1e85}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form>
-              <tabs>
-                <tab name="general" verticallayout="true" id="{55ecd83e-9144-4a75-9114-e65139836bbe}" IsUserDefined="0">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="25%">
-                      <sections>
-                        <section name="ColorStrip" showlabel="false" showbar="false" columns="1" IsUserDefined="0" id="{31dd2013-90a7-4ab1-adee-4cba076daddf}">
-                          <labels>
-                            <label description="ColorStrip" languagecode="1033" />
-                          </labels>
-                        </section>
-                      </sections>
-                    </column>
-                    <column width="75%">
-                      <sections>
-                        <section name="CardHeader" showlabel="false" showbar="false" columns="111" id="{1f327c27-f12b-4e52-aa26-ee05816d9c39}" IsUserDefined="0">
-                          <labels>
-                            <label description="頁首" languagecode="1028" />
-                            <label description="Header" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{21e90993-af21-428e-9fe5-7d514f54f686}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="狀態原因" languagecode="1028" />
-                                  <label description="Status Reason" languagecode="1033" />
-                                </labels>
-                                <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
-                              </cell>
-                              <cell id="{6863e0ed-d570-49a9-b716-12d9bd0bdc90}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                              <cell id="{fcd64400-8abf-4829-b3e1-509741c4f9c9}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                        <section name="CardDetails" showlabel="false" showbar="false" columns="1" id="{fe86655f-d93f-46e1-b78f-b7cbe34c32e0}" IsUserDefined="0">
-                          <labels>
-                            <label description="詳細資料" languagecode="1028" />
-                            <label description="Details" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{db329c61-8f08-4729-b0bb-bf4db62101a2}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="Name" languagecode="1033" />
-                                </labels>
-                                <control id="dnt_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="dnt_name" disabled="false" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                        <section name="CardFooter" showlabel="false" columns="1111" showbar="false" id="{08b928b8-b230-463e-ac6f-4f808d5034e4}" IsUserDefined="0">
-                          <labels>
-                            <label description="頁尾​​" languagecode="1028" />
-                            <label description="Footer" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{ed310d27-3cb7-4254-bbcb-c85cc2cecf3a}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="負責人" languagecode="1028" />
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
-                              </cell>
-                              <cell id="{4d6aa84e-5c3f-4461-8f8d-c63c58600d46}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="建立時間" languagecode="1028" />
-                                  <label description="Created On" languagecode="1033" />
-                                </labels>
-                                <control id="createdon" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdon" disabled="false" />
-                              </cell>
-                              <cell id="{b35192b5-eb56-4b7e-871f-8b61b6d139cc}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                              <cell id="{b77630e6-e89f-4889-979d-b59223cb2760}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="A card form for this entity." languagecode="1033" />
-            </Descriptions>
-          </systemform>
-        </forms>
-        <forms type="main">
-          <systemform>
-            <formid>{87673178-8689-4bc9-89ec-7e9fd1335ab9}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form headerdensity="HighWithControls">
-              <tabs>
-                <tab verticallayout="true" id="{8fd519a5-ea8f-42be-802d-80527b4633d3}" IsUserDefined="1">
-                  <labels>
-                    <label description="一般" languagecode="1028" />
-                    <label description="General" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="100%">
-                      <sections>
-                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{1743956c-8e52-4f10-8ea0-119f8087b2e7}">
-                          <labels>
-                            <label description="一般" languagecode="1028" />
-                            <label description="General" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{ee7ace78-01a8-4679-9992-2c5880a3aaad}">
-                                <labels>
-                                  <label description="分類名稱" languagecode="1033" />
-                                </labels>
-                                <control id="dnt_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="dnt_name" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{65b141bf-0384-41bd-b947-67b56cfe1ac7}">
-                                <labels>
-                                  <label description="負責人" languagecode="1028" />
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-              <header id="{1f254c69-c3d2-4550-9d4a-8d5a97a73232}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-                <rows>
-                  <row>
-                    <cell id="{2e10f5bf-80a6-4e3a-a6b6-edda9057a985}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{7dc00e05-f1a1-476f-82cb-37fc64b1de75}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{1dfe2458-4ce1-4c6e-8a80-8eba21536b98}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                  </row>
-                </rows>
-              </header>
-              <footer id="{67e07648-b474-4e5b-b669-2c03ace60dfa}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-                <rows>
-                  <row>
-                    <cell id="{5cef3769-25b9-4fe9-a2a8-b5b322655db4}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{a3aa6b9c-dc08-48b1-8a78-94ffb13e5260}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{ad18960b-a592-4c6d-baec-7b436a5a5aa0}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                  </row>
-                </rows>
-              </footer>
-              <DisplayConditions Order="0" FallbackForm="true">
-                <Everyone />
-              </DisplayConditions>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="A form for this entity." languagecode="1033" />
-            </Descriptions>
-          </systemform>
-        </forms>
-        <forms type="quick">
-          <systemform>
-            <formid>{18640ade-4e8f-47b6-bae5-d9eede9fb45a}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form>
-              <tabs>
-                <tab verticallayout="true" id="{3a78401b-5cb6-4eef-8ecf-8cec0edcbbc2}" IsUserDefined="1">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="100%">
-                      <sections>
-                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{ace0a79e-4be3-4d19-ba27-ff9735bbd93e}">
-                          <labels>
-                            <label description="一般" languagecode="1028" />
-                            <label description="GENERAL" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{716575df-5b69-46b1-9150-23420c42ac96}">
-                                <labels>
-                                  <label description="Name" languagecode="1033" />
-                                </labels>
-                                <control id="dnt_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="dnt_name" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{e374a881-79e1-4571-a816-6096c0ad08ca}">
-                                <labels>
-                                  <label description="負責人" languagecode="1028" />
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-          </systemform>
-        </forms>
-      </FormXml>
-      <SavedQueries>
-        <savedqueries>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{e713bf00-77be-400f-bba7-3ffbf9d13ae2}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="dnt_name" select="1" icon="1" preview="1">
-                <row name="result" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>0</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <order attribute="dnt_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Active Designation Suncategories" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{c44df9e2-5f55-4105-bf32-647a03e93adc}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="dnt_name" select="1" icon="1" preview="1">
-                <row name="result" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>1</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <order attribute="dnt_name" descending="false" />
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Designation Suncategory Advanced Find View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{1206f37f-6ffe-462f-ba41-78a632f447ea}</savedqueryid>
-            <layoutxml>
-              <grid name="dnt_designationsuncategories" jump="dnt_name" select="1" icon="1" preview="1">
-                <row name="dnt_designationsuncategory" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>2</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <order attribute="dnt_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Designation Suncategory Associated View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{6dca15d8-4caa-4242-8536-c5faf0dab3d2}</savedqueryid>
-            <layoutxml>
-              <grid name="dnt_designationsuncategories" jump="dnt_name" select="1" icon="1" preview="0">
-                <row name="dnt_designationsuncategory" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>64</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Designation Suncategory Lookup View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>0</isdefault>
-            <savedqueryid>{5ba7d4df-e25a-44fb-97c4-ddf60171433d}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="dnt_name" select="1" icon="1" preview="1">
-                <row name="result" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>0</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <order attribute="dnt_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="1" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Inactive Designation Suncategories" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>1</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{231170bc-6758-4104-ab8b-dbb0747d07da}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="dnt_name" select="1" icon="1" preview="1">
-                <row name="result" id="dnt_designationsuncategoryid">
-                  <cell name="dnt_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>4</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <attribute name="dnt_name" />
-                  <attribute name="createdon" />
-                  <order attribute="dnt_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                  <filter type="or" isquickfindfields="1">
-                    <condition attribute="dnt_name" operator="like" value="{0}" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Quick Find Active Designation Suncategories" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{657aff89-3ef8-ec11-82e5-0022485a9150}</savedqueryid>
-            <querytype>8192</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical" output-format="xml-platform">
-                <entity name="dnt_designationsuncategory">
-                  <attribute name="dnt_designationsuncategoryid" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                    <condition attribute="ownerid" operator="eq-userid" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="我的Designation Suncategories" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="屬於我的使用中Designation Suncategories" languagecode="1033" />
             </Descriptions>
           </savedquery>
         </savedqueries>
@@ -26325,46 +24999,6 @@
             <Description description="Donor commitments represent the actual or prospective agreement between a donor and an organization for the donor to make a gift to the organization." languagecode="1033" />
           </Descriptions>
           <attributes>
-            <attribute PhysicalName="craa0_AllenTest">
-              <Type>nvarchar</Type>
-              <Name>craa0_allentest</Name>
-              <LogicalName>craa0_allentest</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>text</Format>
-              <MaxLength>100</MaxLength>
-              <Length>200</Length>
-              <displaynames>
-                <displayname description="Allen Test" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
             <attribute PhysicalName="CreatedBy">
               <Type>lookup</Type>
               <Name>createdby</Name>
@@ -48935,7 +47569,6 @@
         <RolePrivilege name="prvReadContact" level="Global" />
         <RolePrivilege name="prvReaddnt_BankAccount" level="Global" />
         <RolePrivilege name="prvReaddnt_BankRejectedPayment" level="Global" />
-        <RolePrivilege name="prvReaddnt_DesignationSuncategory" level="Global" />
         <RolePrivilege name="prvReaddnt_PaymentMethodCode" level="Global" />
         <RolePrivilege name="prvReaddnt_PaymentProposalLine" level="Global" />
         <RolePrivilege name="prvReaddnt_Pfhistory" level="Global" />
@@ -49159,26 +47792,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>dnt_DesignationCategory</ReferencingEntityName>
-      <ReferencedEntityName>BusinessUnit</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningBusinessUnit</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-          <Description description="記錄所屬業務單位的唯一識別碼" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="business_unit_dnt_designationsuncategory">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
       <ReferencedEntityName>BusinessUnit</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -50787,46 +49400,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>dnt_DesignationCategory</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>ModifiedBy</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-          <Description description="修改記錄之使用者的唯一識別碼。" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="lk_dnt_designationsuncategory_createdby">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>CreatedBy</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-          <Description description="建立記錄之使用者的唯一識別碼。" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="lk_dnt_designationsuncategory_modifiedby">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
       <ReferencedEntityName>SystemUser</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -52989,26 +51562,6 @@
         </Descriptions>
       </RelationshipDescription>
     </EntityRelationship>
-    <EntityRelationship Name="owner_dnt_designationsuncategory">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
-      <ReferencedEntityName>Owner</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwnerId</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Owner Id" languagecode="1033" />
-          <Description description="負責人編號" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
     <EntityRelationship Name="owner_dnt_paymentmethodcode">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
       <IsCustomizable>1</IsCustomizable>
@@ -53395,26 +51948,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>dnt_DesignationCategory</ReferencingEntityName>
-      <ReferencedEntityName>Team</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningTeam</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-          <Description description="記錄所屬團隊的唯一識別碼。" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="team_dnt_designationsuncategory">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
       <ReferencedEntityName>Team</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -53935,26 +52468,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>dnt_DesignationCategory</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningUser</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-          <Description description="記錄所屬使用者的唯一識別碼。" languagecode="1028" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="user_dnt_designationsuncategory">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>dnt_DesignationSuncategory</ReferencingEntityName>
       <ReferencedEntityName>SystemUser</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -56427,6 +54940,7 @@
       <WebResourceId>{263e3de4-f1ea-ec11-bb3c-0022485a1eb1}</WebResourceId>
       <Name>dnt_/dnt_bankaccount/onload.js</Name>
       <DisplayName>dnt_/dnt_bankaccount/onload.js</DisplayName>
+      <LanguageCode>0</LanguageCode>
       <WebResourceType>3</WebResourceType>
       <IntroducedVersion>1.0.0.0</IntroducedVersion>
       <IsEnabledForMobileClient>0</IsEnabledForMobileClient>

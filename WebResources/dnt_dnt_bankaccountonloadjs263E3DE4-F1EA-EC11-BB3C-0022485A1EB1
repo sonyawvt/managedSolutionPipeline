@@ -1,13 +1,31 @@
-function Onchange_dnt_paymentmethodcodeid(executionContext) {
-	var formContext = executionContext.getFormContext();
-	var paymentmethodcode = formContext.getAttribute("dnt_paymentmethodcodeid").getValue();
+function OnSaveForm(executionContext)
+{
+    var formContext = executionContext.getFormContext();
 
-	if(paymentmethodcode == null)
-	{
-		formContext.getAttribute("dnt_name").setValue("");
-	}
-	else
-	{
-		formContext.getAttribute("dnt_name").setValue(paymentmethodcode[0].name);
-	}
+    if (formContext.ui.getFormType() != 1)
+        return;
+
+    var contactaccountnumber = formContext.ui.quickForms.get('contactaccountnumber').getControl(0).getAttribute().getValue();
+
+    if (contactaccountnumber == null)
+    {
+        alert("此捐款人沒有捐款者編號，無法建立Payment Code");
+        executionContext.getEventArgs().preventDefault();
+
+    }
+}
+
+function Onchange_dnt_paymentmethodcodeid(executionContext)
+{
+    var formContext = executionContext.getFormContext();
+    var paymentmethodcode = formContext.getAttribute("dnt_paymentmethodcodeid").getValue();
+
+    if (paymentmethodcode == null)
+    {
+        formContext.getAttribute("dnt_name").setValue("");
+    }
+    else
+    {
+        formContext.getAttribute("dnt_name").setValue(paymentmethodcode[0].name);
+    }
 }
